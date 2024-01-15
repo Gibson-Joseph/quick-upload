@@ -5,24 +5,37 @@ import { memo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //Icons
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
+import { logIn } from "../../../services/authService";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingSpinner, setIsLoadingSpinner] = useState(false);
 
   const methods = useForm({
     defaultValues: {
-      name: "",
+      email: "",
       password: "",
     },
   });
 
   const { errors } = methods.formState;
 
-  const onSubmit = (data: any) => {
-    console.log("data", data);
-    navigate("/");
+  const onSubmit = async (data: any) => {
+    setIsLoadingSpinner(true);
+    logIn(data)
+      .then((res) => {
+        console.log("Res", res);
+        toast.success("Successfully logged in!");
+        navigate("/");
+      })
+      .catch((err: Error) => {
+        console.log("err", err);
+      })
+      .finally(() => {
+        setIsLoadingSpinner(false);
+      });
   };
 
   return (
@@ -46,7 +59,7 @@ const Login = () => {
             Icon={AiOutlineUser}
             errors={errors}
             labelName="Username"
-            name="name"
+            name="email"
             register={methods.register}
           />
           <Input
@@ -63,7 +76,7 @@ const Login = () => {
             className="flex justify-center gap-x-3 bg-[#7269ef] cursor-pointer py-2 w-full rounded-sm text-lg font-medium hover:bg-indigo-500 transition-all duration-300"
           >
             <span className="fon-[PublicSans] text-white">Login </span>
-            {isLoading && <Loader />}
+            {isLoadingSpinner && <Loader />}
           </button>
         </div>
       </form>
