@@ -30,7 +30,7 @@ const FileUploadSuccess = ({
           <p className="text-base font-medium font-[PublicSans]">
             Your file have been uploaded successfully.
           </p>
-          <p className="text-[#818181] font-medium font-[PublicSans] text-sm sm:text-base transition-all duration-300">
+          <p className="text-[#130f40] opacity-[0.65] font-medium font-[PublicSans] text-sm sm:text-base transition-all duration-300">
             Your file is now available.
           </p>
         </div>
