@@ -89,7 +89,7 @@ const QuickUpload = () => {
   return (
     <div className="w-full h-full relative flex flex-col">
       <HeaderComponent />
-      <div className="w-full h-full flex flex-col justify-center items-center bg-[#f7f7ff] px-5 lg:px-3">
+      <div className="w-full h-full flex flex-col justify-center items-center bg-[#f7f7ff] px-5 lg:px-3 shadow-inner">
         {!isUploadSuccess && !isUploadError && (
           <div className="max-w-[640px] w-full text-center flex flex-col gap-y-5">
             <div
@@ -171,7 +171,7 @@ const QuickUpload = () => {
             </div>
             <div className="w-full">
               <button
-                className="py-2 px-2 w-full text-[#f1f1f1] font-[PublicSans] rounded-sm bg-[#333333c0] hover:bg-[#333333] transition-all duration-200 shadow-md"
+                className="py-2 px-2 w-full text-[#f1f1f1] font-[PublicSans] rounded-sm bg-slate-600 hover:bg-slate-700 transition-all duration-200 shadow-md"
                 type="button"
                 onClick={() => handleUpload()}
               >
