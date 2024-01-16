@@ -32,9 +32,9 @@ const Input = ({
           />
         </div>
       </label>
-      {errors.name?.message && (
+      {errors[name]?.message && (
         <span className="text-red-500 py-2 font-[PublicSans] text-sm">
-          {errors.name?.message}
+          {errors[name]?.message}
         </span>
       )}
     </div>

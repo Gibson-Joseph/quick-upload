@@ -1,20 +1,19 @@
-import { memo, useState } from "react";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
+import FileUploadError from "../../components/FileUploadError/FileUploadError";
 import FileUploadSuccess from "../../components/FileUploadSuccess/FileUploadSuccess";
-import { toast } from "react-toastify";
 import { uploadFile } from "../../../services/uploadService";
 import { useDropzone } from "react-dropzone";
+import { memo, useState } from "react";
 //Iocns
 import { FaFilePdf } from "react-icons/fa";
 import { FaFileImage } from "react-icons/fa";
 import { IoDocumentText } from "react-icons/io5";
-import FileUploadError from "../../components/FileUploadError/FileUploadError";
 
 const QuickUpload = () => {
   const [isError, setIsError] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [isUploadSuccess, setIsUploadSuccess] = useState<boolean>(false);
   const [isUploadError, setIsUploadError] = useState<boolean>(false);
+  const [isUploadSuccess, setIsUploadSuccess] = useState<boolean>(false);
   const [selectedFileName, setSelectedFileName] = useState<null | string>(null);
   const [isUploadInProgress, setIsUploadInProgress] = useState(false);
 
@@ -109,9 +108,21 @@ const QuickUpload = () => {
                   <div>
                     <div className="w-full flex justify-center">
                       <div className="text-[#95afc0] opacity-[0.55] flex w-fit gap-x-8">
-                        <FaFileImage className="-rotate-45 w-10 h-10 sm:w-14 sm:h-14 duration-300 transition-all" />
-                        <FaFilePdf className="w-10 h-10 sm:w-14 sm:h-14 duration-300 transition-all" />
-                        <IoDocumentText className="rotate-45 w-10 h-10 sm:w-14 sm:h-14 duration-300 transition-all" />
+                        <FaFileImage
+                          className={`-rotate-45 w-10 h-10 sm:w-14 sm:h-14 duration-300 transition-all ${
+                            selectedFile && "text-blue-500"
+                          }`}
+                        />
+                        <FaFilePdf
+                          className={`w-10 h-10 sm:w-14 sm:h-14 duration-300 transition-all  ${
+                            selectedFile && "text-red-500"
+                          }`}
+                        />
+                        <IoDocumentText
+                          className={`rotate-45 w-10 h-10 sm:w-14 sm:h-14 duration-300 transition-all   ${
+                            selectedFile && "text-gray-500"
+                          }`}
+                        />
                       </div>
                     </div>
                     <input {...getInputProps()} />
@@ -138,7 +149,7 @@ const QuickUpload = () => {
                               key={index}
                               className="text-red-600 text-sm font-[PublicSans]"
                             >
-                              Yours file is larger than 5mb.
+                              Yours file is larger than 10mb.
                             </span>
                           );
                         } else if (errItem.code === "file-invalid-type") {
@@ -147,7 +158,7 @@ const QuickUpload = () => {
                               key={index}
                               className="text-red-600 text-sm font-[PublicSans]"
                             >
-                              File type must be application/pdf.
+                              Only PDF files are allowed for upload.
                             </span>
                           );
                         }
