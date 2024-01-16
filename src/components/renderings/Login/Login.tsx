@@ -44,28 +44,30 @@ const Login = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center bg-[#f7f7ff] p-3 md:p-6">
       {/* Login header */}
-      <div className="space-y-3 mb-9 flex flex-col justify-center items-center">
+      <div className="space-y-1 mb-5 sm:mb-9 flex flex-col justify-center items-center transition-all duration-300">
         <h1 className="font-[PublicSans] text-2xl text-[#343a40]">Sign In</h1>
         <p className="font-[PublicSans] text-[#7a7f9a]">
-          Sign in to continue to file upload
+          Sign in to proceed with file upload
         </p>
       </div>
 
       {/* Login Form */}
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="w-full max-w-md md:max-w-lg p-4 sm:p-8 md:p-12 rounded-md shadow-md bg-white transition-all duration-300"
+        className="w-full max-w-md md:max-w-lg p-3 sm:p-8 md:p-12 rounded-md shadow-md bg-white transition-all duration-300"
       >
         <div className="flex flex-col gap-y-3">
           <Input
+            message="Email is required for account access."
             inputType="text"
             Icon={AiOutlineUser}
             errors={errors}
-            labelName="Username"
+            labelName="Email"
             name="email"
             register={methods.register}
           />
           <Input
+            message="Please enter your password."
             inputType={showPassword ? "text" : "password"}
             Icon={AiOutlineLock}
             errors={errors}
@@ -88,10 +90,10 @@ const Login = () => {
             </span>
           </button>
         </div>
-        <div className="mt-5">
+        <div className="mt-3 md:mt-5 transition-all duration-300">
           <button
             type="submit"
-            className="flex justify-center gap-x-3 bg-[#7269ef] cursor-pointer py-2 w-full rounded-sm text-lg font-medium hover:bg-indigo-500 transition-all duration-300"
+            className="flex justify-center gap-x-3 bg-[#7269ef] cursor-pointer py-1.5 sm:py-2 w-full rounded-sm text-lg font-medium hover:bg-indigo-500 transition-all duration-300"
           >
             <span className="font-[PublicSans] text-white">Login </span>
             {isLoadingSpinner && <Loader />}
