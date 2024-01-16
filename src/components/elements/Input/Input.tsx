@@ -3,6 +3,7 @@ import { IconType } from "react-icons";
 const Input = ({
   name,
   errors,
+  message,
   register,
   inputType,
   labelName,
@@ -10,6 +11,7 @@ const Input = ({
 }: {
   name: string;
   errors: any;
+  message: string;
   register: any;
   inputType: string;
   labelName: string;
@@ -21,16 +23,16 @@ const Input = ({
         <span className="font-[PublicSans] text-[#495057] text-base mb-2">
           {labelName}
         </span>
-        <div className="flex border rounded-sm cursor-text">
-          <span className="bg-[#f8f9fa] flex justify-center items-center px-3 border-r">
-            <Icon className="w-5 h-5 text-[#7a7f9a]" />
+        <div className={`flex border rounded-sm cursor-text ${errors[name]?.message && "border-red-500"}`}>
+          <span className={`bg-[#f8f9fa] text-[#7a7f9a] flex justify-center items-center px-3 border-r ${errors[name]?.message && "border-r-red-500 text-red-500"}`}>
+            <Icon className="w-5 h-5" />
           </span>
           <input
             type={inputType}
             className=" w-full text-sm text-[#495057] font-[PublicSans] outline-none py-2 indent-2"
             id={name}
             {...register(name, {
-              required: "Please enter your name.",
+              required: message,
             })}
           />
         </div>
