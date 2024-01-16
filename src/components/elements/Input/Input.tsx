@@ -4,12 +4,14 @@ const Input = ({
   name,
   errors,
   register,
+  inputType,
   labelName,
   Icon,
 }: {
   name: string;
   errors: any;
   register: any;
+  inputType: string;
   labelName: string;
   Icon: IconType;
 }) => {
@@ -24,6 +26,7 @@ const Input = ({
             <Icon className="w-5 h-5 text-[#7a7f9a]" />
           </span>
           <input
+            type={inputType}
             className=" w-full text-sm text-[#495057] font-[PublicSans] outline-none py-2 indent-2"
             id={name}
             {...register(name, {

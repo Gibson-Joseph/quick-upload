@@ -6,11 +6,14 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { memo, useState } from "react";
 //Icons
+import { MdCheckBox } from "react-icons/md";
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 
 const Login = () => {
   const navigate = useNavigate();
 
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoadingSpinner, setIsLoadingSpinner] = useState(false);
 
   const methods = useForm({
@@ -55,6 +58,7 @@ const Login = () => {
       >
         <div className="flex flex-col gap-y-3">
           <Input
+            inputType="text"
             Icon={AiOutlineUser}
             errors={errors}
             labelName="Username"
@@ -62,19 +66,34 @@ const Login = () => {
             register={methods.register}
           />
           <Input
+            inputType={showPassword ? "text" : "password"}
             Icon={AiOutlineLock}
             errors={errors}
             labelName="Password"
             name="password"
             register={methods.register}
           />
+          <button
+            type="button"
+            className="flex items-center gap-x-1 w-fit"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? (
+              <MdCheckBox className="w-4 h-4 text-[#7a7f9a]" />
+            ) : (
+              <MdCheckBoxOutlineBlank className="w-4 h-4 text-[#7a7f9a]" />
+            )}
+            <span className="font-[PublicSans] text-[#495057] text-sm">
+              Show password
+            </span>
+          </button>
         </div>
         <div className="mt-5">
           <button
             type="submit"
             className="flex justify-center gap-x-3 bg-[#7269ef] cursor-pointer py-2 w-full rounded-sm text-lg font-medium hover:bg-indigo-500 transition-all duration-300"
           >
-            <span className="fon-[PublicSans] text-white">Login </span>
+            <span className="font-[PublicSans] text-white">Login </span>
             {isLoadingSpinner && <Loader />}
           </button>
         </div>

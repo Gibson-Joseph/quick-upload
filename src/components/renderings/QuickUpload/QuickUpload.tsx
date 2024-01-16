@@ -98,7 +98,7 @@ const QuickUpload = () => {
               <h1 className="text-[#130f40] pb-3 text-xl font-medium font-[PublicSans]">
                 Upload a file
               </h1>
-              <div className="bg-[rgb(239, 239, 239)] rounded-md p-2 md:p-3 transition-all duration-300">
+              <div className="rounded-md p-2 md:p-3 transition-all duration-300">
                 <div
                   {...getRootProps()}
                   className={`${
