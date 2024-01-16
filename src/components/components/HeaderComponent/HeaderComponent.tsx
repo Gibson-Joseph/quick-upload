@@ -29,7 +29,7 @@ const HeaderComponent = () => {
           <button
             type="button"
             className="text-white flex items-center font-[PublicSans] bg-slate-600 py-1 px-2 border-2 border-slate-600 rounded-md hover:bg-white hover:text-slate-600 transition-all duration-300"
-            onClick={() => handleLogout}
+            onClick={() => handleLogout()}
           >
             <FaSignOutAlt className="mr-2 w-5 h-5" />
             <span>Logout</span>
