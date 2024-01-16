@@ -1,12 +1,12 @@
 import Input from "../../elements/Input/Input";
 import Loader from "../../elements/Loader/Loader";
+import { toast } from "react-toastify";
+import { logIn } from "../../../services/authService";
 import { useForm } from "react-hook-form";
-import { memo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { memo, useState } from "react";
 //Icons
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
-import { logIn } from "../../../services/authService";
-import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -49,10 +49,9 @@ const Login = () => {
       </div>
 
       {/* Login Form */}
-
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="w-full max-w-md md:max-w-lg p-8 md:p-12 rounded-md shadow-md bg-white"
+        className="w-full max-w-md md:max-w-lg p-4 sm:p-8 md:p-12 rounded-md shadow-md bg-white transition-all duration-300"
       >
         <div className="flex flex-col gap-y-3">
           <Input

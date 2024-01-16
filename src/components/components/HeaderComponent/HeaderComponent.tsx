@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { toast } from "react-toastify";
 import { logOut } from "../../../services/authService";
 import { useNavigate } from "react-router-dom";
@@ -39,4 +40,4 @@ const HeaderComponent = () => {
   );
 };
 
-export default HeaderComponent;
+export default memo(HeaderComponent);

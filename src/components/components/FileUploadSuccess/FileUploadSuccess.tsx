@@ -1,6 +1,7 @@
+import { memo } from "react";
+//Icons
 import { MdCancel } from "react-icons/md";
 import { FiCheckCircle } from "react-icons/fi";
-import { memo } from "react";
 
 const FileUploadSuccess = ({
   handleClick,
@@ -27,10 +28,10 @@ const FileUploadSuccess = ({
         </h3>
         <div className="text-center space-y-1">
           <p className="text-base font-medium font-[PublicSans]">
-            Your file have been uploaded successfully
+            Your file have been uploaded successfully.
           </p>
-          <p className="text-[#818181] font-medium font-[PublicSans]">
-            Your file is now available
+          <p className="text-[#818181] font-medium font-[PublicSans] text-sm sm:text-base transition-all duration-300">
+            Your file is now available.
           </p>
         </div>
       </div>
